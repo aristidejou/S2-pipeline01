@@ -85,7 +85,7 @@ stage('build ') {
                sh '''
                ls -l
                cd DEV
-           docker build -t devopseasylearning2021/canary:${BUILD_NUMBER} .
+           docker build -t devopseasylearning2021/canary-dubois:${BUILD_NUMBER} .
                '''
             }
         }
@@ -100,7 +100,7 @@ cat <<EOF > docker-compose.yml
 version: "3.3"
 services:
   canary:
-    image: devopseasylearning2021/canary:${BUILD_NUMBER} 
+    image: devopseasylearning2021/canary-dubois:${BUILD_NUMBER} 
     expose:
       - 80
     ports:
