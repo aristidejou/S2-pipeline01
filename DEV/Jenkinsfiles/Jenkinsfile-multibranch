@@ -44,7 +44,7 @@ stage('build ') {
             steps {
                sh '''
                cd $WORKSPACE/DEV
-           docker build -t devopseasylearning2021/canary:${BUILD_NUMBER} .
+           docker build -t devopseasylearning2021/canary-dubois:${BUILD_NUMBER} .
                '''
             }
         }
