@@ -81,8 +81,8 @@ stage('checking ') {
                sh '''
 echo  '[url "git@github.com:"]' >> ~/.gitconfig 
  echo 'insteadOf = https://github.com/' >> ~/.gitconfig 
- git config --global user.email "info@devopseasylearning.com"
-  git config --global user.name "devopseasylearning"
+ git config --global user.email "ajoutane@ttuhsc.edu"
+  git config --global user.name "aristidejou"
 git tag -a $TAG -m "Tag generated from jenkins"
 git tag
 git push origin $TAG
@@ -104,7 +104,7 @@ git push origin $TAG
             steps {
                sh '''
                cd S2-pipeline01/DEV
-           docker build -t devopseasylearning2021/canary-prod:$TAG .
+           docker build -t devopseasylearning2021/canary-dubois-prod:$TAG .
                '''
             }
         }
@@ -116,7 +116,7 @@ git push origin $TAG
             steps {
                sh '''
 
-             docker push  devopseasylearning2021/canary-prod:$TAG 
+             docker push  devopseasylearning2021/canary-dubois-prod:$TAG 
                 '''
             }
         }
