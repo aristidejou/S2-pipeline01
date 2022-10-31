@@ -105,6 +105,7 @@ git push origin $TAG
                sh '''
                cd S2-pipeline01/DEV
            docker build -t devopseasylearning2021/canary-dubois-prod:$TAG .
+	   echo "jou"
                '''
             }
         }
