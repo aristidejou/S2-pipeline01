@@ -47,7 +47,7 @@ pipeline {
             steps {
                sh '''
                rm -rf ./*
-	       git clone -b $BranchName git@github.com:aristidejou/S2-pipeline01.git
+	       git clone -b $BranchName git@github.com:devopseasylearning/S2-pipeline01.git
            ls -l
          cd S2-pipeline01/DEV
          ls -l
@@ -81,8 +81,8 @@ stage('checking ') {
                sh '''
 echo  '[url "git@github.com:"]' >> ~/.gitconfig 
  echo 'insteadOf = https://github.com/' >> ~/.gitconfig 
- git config --global user.email "ajoutane@ttuhsc.edu"
-  git config --global user.name "aristidejou"
+ git config --global user.email "info@devopseasylearning.com"
+  git config --global user.name "devopseasylearning"
 git tag -a $TAG -m "Tag generated from jenkins"
 git tag
 git push origin $TAG
