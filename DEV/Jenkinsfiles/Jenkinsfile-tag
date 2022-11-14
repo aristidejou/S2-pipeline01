@@ -85,7 +85,7 @@ echo  '[url "git@github.com:"]' >> ~/.gitconfig
   git config --global user.name "devopseasylearning"
 git tag -a $TAG -m "Tag generated from jenkins"
 git tag
-git push origin $TAG
+git push -u origin $TAG
                 '''
             }
         }
