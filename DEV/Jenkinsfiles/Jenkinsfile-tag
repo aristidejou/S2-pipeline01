@@ -85,7 +85,8 @@ echo  '[url "git@github.com:"]' >> ~/.gitconfig
   git config --global user.name "aristidejou"
 git tag -a $TAG -m "Tag generated from jenkins"
 git tag
- sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
+git push -u origin $TAG
+ //sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/aristidejou/S2-pipeline01.git')
 //git push origin $TAG
                 '''
             }
