@@ -55,12 +55,6 @@ pipeline {
             }
         }
 
-
-
-
-
-
-
 stage('checking ') {
 
             steps {
@@ -73,8 +67,6 @@ stage('checking ') {
                '''
             }
         }
-       
-
 
     stage('tagging & push') {
             steps {
@@ -106,7 +98,7 @@ git push origin $TAG
             steps {
                sh '''
                cd S2-pipeline01/DEV
-           docker build -t devopseasylearning2021/canary-dubois-prod:$TAG .
+           docker build -t aristidejou/canary-dubois-prod:$TAG .
 	   echo "jou"
                '''
             }
@@ -119,7 +111,7 @@ git push origin $TAG
             steps {
                sh '''
 
-             docker push  devopseasylearning2021/canary-dubois-prod:$TAG 
+             docker push  aristidejou/canary-dubois-prod:$TAG 
                 '''
             }
         }
