@@ -85,6 +85,8 @@ echo  '[url "git@github.com:"]' >> ~/.gitconfig
   git config --global user.name "aristidejou"
 git tag -a $TAG -m "Tag generated from jenkins"
 git tag
+git push origin $TAG
+
                 '''
             }
         }
@@ -93,7 +95,6 @@ git tag
 
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-				git push origin $TAG
 
 			}
 		}
