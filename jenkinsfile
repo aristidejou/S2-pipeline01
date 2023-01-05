@@ -1,0 +1,57 @@
+pipeline {
+    agent { 
+        label 'node1'
+         }
+   
+    
+ options { buildDiscarder(logRotator(artifactDaysToKeepStr: '',
+     artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '5'))
+      disableConcurrentBuilds() }
+      
+       environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+		USERNAME='ovdi'
+		PASSWORD='Pourquoi2026$'
+	}
+	
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        
+        stage('build') {
+            steps {
+                sh'''
+                docker build -t aris:001 .
+                '''
+            }
+        }
+        
+        stage('tag-image') {
+            steps {
+               sh'''
+               docker tag aris:001 ovdi/aris:001
+               '''
+            }
+        }
+        
+        stage('docker-login') {
+            steps {
+               sh'''
+               docker login -u $USERNAME -p $PASSWORD 
+               '''
+            }
+        }
+        
+        stage('docker-push') {
+            steps {
+               sh'''
+               docker push ovdi/aris:001
+               '''
+            }
+        }
+        
+    }
+}
