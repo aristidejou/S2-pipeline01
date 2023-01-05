@@ -54,4 +54,23 @@ pipeline {
         }
         
     }
+    
+    post {
+   
+   success {
+      slackSend (channel: '#prod', color: 'good', message: "SUCCESSFUL: Application CANARY the Branch tested is  $BranchName Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+
+ 
+    unstable {
+      slackSend (channel: '#prod', color: 'warning', message: "UNSTABLE: Application CANARY the Branch tested is  $BranchName Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+
+    failure {
+      slackSend (channel: '#prod', color: '#FF0000', message: "FAILURE: Application CANARY the Branch tested is  $BranchNameJob '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+   
+    cleanup {
+      deleteDir()
+    }
 }
